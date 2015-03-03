@@ -63,7 +63,7 @@ def getTiles(xyRange,zoom):
             #define the local path as well as the complete path to the local and remote files
             localPath = os.path.join(tileDir,str(zoom),str(x))
             localFile = os.path.join(localPath,tileFileName)
-            preFile = tileServerUrl+str(zoom)+"/"+str(x)+"/"+str(y)+".png" # This part stiches together the  WEB PATH with the standard X/Y/Z.png ending
+            preFile = tileServerUrl+str(zoom)+"/"+str(x)+"/"+str(y)+".png" # but @2x.png or @3x or @4x for different size tiles
             # remoteFile = preFile + "STYLE STRING" ## Sometimes tile paths need a style string (like MapBox Studio tiles)
 
             #check if the file exists locally
@@ -78,7 +78,7 @@ def getTiles(xyRange,zoom):
 ### Merge tiles into one image ###
 def mergeTiles(xyRange,zoom,filename):
     from PIL import Image
-    tileSize = 256
+    tileSize = 256 # For 1x tiles: 256 2x: 512 3x: 768 4x: 1024
     tileDir = os.path.join(os.getcwd(),"LOCAL DIR",str(zoom)) # Put the same local directory as above for the tiles
 
     out = Image.new( 'RGBA', ((xyRange["xMax"]-xyRange["xMin"]+1) * tileSize, (xyRange["yMax"]-xyRange["yMin"]+1) * tileSize) ) 
