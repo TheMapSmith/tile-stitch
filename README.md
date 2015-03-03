@@ -7,6 +7,6 @@ Original credit to [Ossum](https://www.facebook.com/ossumdesigns) from [Instruct
 
 Reads extents from a single CSV file and downloads tiles within the extents and then stitches them together into a large file 
 
-##geojson_to_textents.py
+##geojson_to_extents_csv.py
 
 Reads the 'bbox' property from a GeoJSON file and outputs the coordinate pairs to a massive CSV
